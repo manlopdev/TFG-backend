@@ -7,6 +7,9 @@ RUN gradle clean build -x test
 # Step 2: Run the JAR
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
+
+# Copy only the main JAR (not the plain one)
+COPY --from=build /app/build/libs/*-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
