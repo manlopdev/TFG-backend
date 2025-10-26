@@ -11,5 +11,5 @@ WORKDIR /app
 # Copy only the main JAR (not the plain one)
 COPY --from=build /app/build/libs/*-SNAPSHOT.jar app.jar
 
-EXPOSE 8080
+EXPOSE 8085
 ENTRYPOINT ["java","-jar","app.jar"]

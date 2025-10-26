@@ -14,7 +14,7 @@ services:
   spring-app:
     build: .
     ports:
-      - '8080:8080'
+      - '8085:8085'
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydatabase
       SPRING_DATASOURCE_USERNAME: myuser
