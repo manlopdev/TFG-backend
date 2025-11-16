@@ -1,5 +1,5 @@
 # Step 1: Build the JAR using Gradle
-FROM gradle:jdk21-corretto AS build
+FROM gradle:8.10.2-jdk17 AS build
 WORKDIR /app
 COPY . .
 RUN gradle clean build -x test
