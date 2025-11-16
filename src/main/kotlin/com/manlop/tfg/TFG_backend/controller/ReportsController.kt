@@ -19,28 +19,24 @@ class ReportsController {
     @Autowired
     lateinit var reportRepository: ReportRepository
 
-    @CrossOrigin(origins = ["http://localhost:8084", "*"])
     @PostMapping
     fun createReport(@RequestBody report: Report): ResponseEntity<Report> {
         val savedReport = reportRepository.save(report)
         return ResponseEntity.ok(savedReport)
     }
 
-    @CrossOrigin(origins = ["http://localhost:8084", "*"])
     @GetMapping("/simple")
     fun getAllSimpleReports(): ResponseEntity<List<SimpleReport>> {
         val reports = reportRepository.findAllSimple()
         return ResponseEntity.ok(reports)
     }
 
-    @CrossOrigin(origins = ["http://localhost:8084", "*"])
-    @GetMapping()
+    @GetMapping
     fun getAllReports(): ResponseEntity<List<Report>> {
         val reports = reportRepository.findAll().toList()
         return ResponseEntity.ok(reports)
     }
 
-    @CrossOrigin(origins = ["http://localhost:8084", "*"])
     @GetMapping("/{tokenId}")
     fun getReportByTokenId(@PathVariable tokenId: String): ResponseEntity<Report> {
         val report = reportRepository.findByTokenId(tokenId)
